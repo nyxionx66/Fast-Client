@@ -1,0 +1,314 @@
+#
+# Version 8.0
+#
+text.all=All
+text.hud=HUD
+text.render=Render
+text.player=Player
+text.misc=Misc
+text.home=Home
+text.mods=Mods
+text.music=Music
+text.profile=Profile
+text.settings=Settings
+text.search=Search
+text.selectfile=Select File
+text.add=Add
+text.name=Name
+text.serveraddress=Server Address
+text.createprofile=Create Profile
+text.icon=Icon
+
+design.simple=Simple
+design.classic=Classic
+design.clear=Clear
+design.materialyou=MaterialYou
+
+mod.hudsettings.name=HUD
+mod.hudsettings.description=Customizing the HUD
+
+mod.modmenu.name=Mod Menu
+mod.modmenu.description=Customize Mod Menu related settings
+
+mod.fpsdisplay.name=FPS Display
+mod.fpsdisplay.description=Display Minecraft FPS
+
+mod.coords.name=Coords
+mod.coords.description=Display your coordnates
+
+mod.combocounter.name=Combo Counter
+mod.combocounter.description=Display Combo
+
+mod.reachdisplay.name=Reach Display
+mod.reachdisplay.description=Display reach
+
+mod.daycounter.name=Day Counter
+mod.daycounter.description=Count Minecraft day
+
+mod.stopwatch.name=Stopwatch
+mod.stopwatch.description=Measure the time
+
+mod.playercounter.name=Player Counter
+mod.playercounter.description=Display the number of players
+
+mod.healthdisplay.name=Health Display
+mod.healthdisplay.description=Display your health
+
+mod.yawdisplay.name=Yaw Display
+mod.yawdisplay.description=Display yaw of you
+
+mod.pitchdisplay.name=Pitch Display
+mod.pitchdisplay.description=Display pitch of you
+
+mod.jumpresetindicator.name=Jump Reset Indicator
+mod.jumpresetindicator.description=Indicate if jump reset was done correctly
+
+mod.snaptap.name=Snap Tap
+mod.snaptap.description=The last key pressed takes precedence
+
+mod.gamemodedisplay.name=Game Mode Display
+mod.gamemodedisplay.description=Display your game mode
+
+mod.keystrokes.name=Keystrokes
+mod.keystrokes.description=Display pressed keys
+
+mod.mousestrokes.name=Mouse Strokes
+mod.mousestrokes.description=Display mouse movements
+
+mod.musicinfo.name=Music Info
+mod.musicinfo.description=Display the currently playing music
+
+mod.hitdelayfix.name=Hit Delay Fix
+mod.hitdelayfix.description=Fix the hit delay
+
+mod.nojumpdelay.name=No Jump Delay
+mod.nojumpdelay.description=Remove jump delays
+
+mod.taplook.name=Taplook
+mod.taplook.description=Switch viewing orientation at the touch of a button
+
+mod.serveripdisplay.name=Server IP Display
+mod.serveripdisplay.description=Display the IP of the server you are joining
+
+mod.namedisplay.name=Name Display
+mod.namedisplay.description=Display your name
+
+mod.pingdisplay.name=Ping Display
+mod.pingdisplay.description=Display your ping
+
+mod.weatherdisplay.name=Weather Display
+mod.weatherdisplay.description=Display world weather
+
+mod.playtimedisplay.name=Play Time Display
+mod.playtimedisplay.description=Display playing time
+
+mod.protocolversion.name=Protocol Version
+mod.protocolversion.description=Display the Protocol Version
+
+mod.zoom.name=Zoom
+mod.zoom.description=Zoom in on a viewpoint
+
+mod.overlayeditor.name=Overlay Editor
+mod.overlayeditor.description=Edit Overlay
+
+mod.discordrpc.name=Discord RPC
+mod.discordrpc.description=Enable Discord Rich Presence
+
+mod.weatherchanger.name=Weather Changer
+mod.weatherchanger.description=Change the weather
+
+mod.timechanger.name=Time Changer
+mod.timechanger.description=Change the world time
+
+mod.freelook.name=Freelook
+mod.freelook.description=Can turn head without changing direction
+
+mod.clock.name=Clock
+mod.clock.description=Display current time
+
+mod.memoryusage.name=Memory Usage
+mod.memoryusage.description=Display Minecraft memory usage
+
+mod.bedwarsstatsoverlay.name=Bedwars Stats Overlay
+mod.bedwarsstatsoverlay.description=Display Bedwars Stats
+
+mod.oldanimations.name=Old Animations
+mod.oldanimations.description=Return animation to 1.7
+
+mod.hypixel.name=Hypixel
+mod.hypixel.description=Useful features for Hypixel
+
+mod.particles.name=Particles
+mod.particles.description=Customize the particles
+
+mod.bloodparticles.name=Blood Particles
+mod.bloodparticles.description=Add a blood effects
+
+mod.projectiletrail.name=Projectile Trail
+mod.projectiletrail.description=Display effects after thrown objects
+
+mod.musicwaveform.name=Music Waveform
+mod.musicwaveform.description=Displays the waveform of the currently playing music
+
+mod.memoryusage.name=Memory Usage
+mod.memoryusage.description=Display Minecraft memory usage
+
+mod.speedometer.name=Speedometer
+mod.speedometer.description=Display player speed
+
+mod.autogg.name=Auto GG
+mod.autogg.description=Automatically send with gg when the game is finished
+
+mod.customhand.name=Custom Hand
+mod.customhand.description=Change the position scale etc
+
+mod.bossbar.name=Boss Bar
+mod.bossbar.description=Customize boss bar
+
+mod.systemsettings.name=System Settings
+mod.systemsettings.description=Setting the system details
+
+mod.fullbright.name=Fullbright
+mod.fullbright.description=Brighten your viewpoint
+
+mod.webbrowser.name=Web Browser
+mod.webbrowser.description=Display the Web Browser
+
+mod.forcemainhand.name=Force Main Hand
+mod.forcemainhand.description=Force the main hand to be set
+
+setting.darkmode=Dark Mode
+setting.darkmode.description=Enable dark mode
+setting.keybind=Keybind
+setting.keybind.description=Set keybind
+setting.icon=Icon
+setting.icon.description=Set the icon to display
+setting.color=Color
+setting.color.description=Select a color
+setting.blur=Blur
+setting.blur.description=Set the Blur effect
+setting.design=Design
+setting.design.description=Set the design
+setting.blurintensity=Blur intensity
+setting.blurintensity.description=Set the intensity of the blur
+setting.maxtick=Max tick
+setting.maxtick.description=Set the maximum number of ticks
+setting.spacekey=Space Key
+setting.spacekey.description=Display the space key
+setting.unmarked=Unmarked
+setting.unmarked.description=Hide the mark
+setting.snaptapcompatibility=Compatibility with SnapTap
+setting.snaptapcompatibility.description=Reflects keys released by Snap Tap
+setting.type=Type
+setting.type.description=Set the Type
+setting.cover=Cover
+setting.simple=Simple
+setting.normal=Normal
+setting.perspective=Perspective
+setting.perspective.description=Set the Perspective orientation
+setting.front=Front
+setting.behind=Behind
+setting.toggle=Toggle
+setting.toggle.description=Change to toggle
+setting.refreshtime=Refresh Time
+setting.refreshtime.description=Set a time to refresh
+setting.scroll=Scroll
+setting.zoom.scroll.description=Make the zoom scrollable
+setting.smoothzoom=Smooth Zoom
+setting.smoothzoom.description=Make zoom smooth
+setting.zoomspeed=Zoom Speed
+setting.zoomspeed.description=Changing the zoom animation speed
+setting.zoomfactor=Zoom Factor
+setting.zoomfactor.description=Change the factor of zoom
+setting.smoothcamera=Smooth Camera
+setting.smoothcamera.description=Smoothly move the camera
+setting.clearwater=Clear Water
+setting.clearwater.description=Remove water overlay
+setting.clearfire=Clear Fire
+setting.clearfire.description=Remove fire overlay
+setting.weather=Weather
+setting.weather.description=Set the weather
+setting.clear=Clear
+setting.rain=Rain
+setting.storm=Storm
+setting.snow=Snow
+setting.time=Time
+setting.time.description=Set the time
+setting.max=Max
+setting.max.description=Set the max
+setting.oldbreaking=Old Breaking
+setting.oldbreaking.description=Return to blocking animation while sword or eating
+setting.disableattackcooldown=Disable Attack Cooldown
+setting.disableattackcooldown.description=Prevents the sword from going down on cooldown when attacking
+setting.oldpvpsounds=Old PvP Sounds
+setting.oldpvpsounds.description=Disable sound for new PvP
+setting.oldrod=Old Rod
+setting.oldrod.description=Revert to the old Rod
+setting.oldbow=Old Bow
+setting.oldbow.description=Revert to the old bow
+setting.disableheartflash=Disable Heart Flash
+setting.disableheartflash.description=Disable heart flash and revert to 1.7
+setting.levelhead=Level Head
+setting.levelhead.description=Display Hypixel Level on nametag
+setting.autotip=Auto Tip
+setting.autotip.description=Automate the tip
+setting.alwayssharpness=Always Sharpness
+setting.alwayssharpness.description=Always spawn the sharpness effect
+setting.alwayscriticals=Always Criticals
+setting.alwayscriticals.description=Always spawn the criticals effect
+setting.sharpness=Sharpness
+setting.sharpness.description=Enable the sharpness effect
+setting.criticals=Criticals
+setting.criticals.description=Enable the criticals effect
+setting.sharpnessamount=Sharpness Amount
+setting.sharpnessamount.description=Set the amount of sharpness effect
+setting.criticalsamount=Criticals Amount
+setting.criticalsamount.description=Set the amount of criticals effect
+setting.sound=Sound
+setting.sound.description=Enable Sound
+setting.multiplier=Multiplier
+setting.multiplier.description=Set the multiplier
+setting.blacksmoke=Black Smoke
+setting.fire=Fire
+setting.greenstar=Green Star
+setting.hearts=Hearts
+setting.magic=Magic
+setting.musicnote=Music Note
+setting.slime=Slime
+setting.spark=Spark
+setting.swirl=Swirl
+setting.whitesmoke=White Smoke
+setting.effect=Effect
+setting.effect.description=Set the type of effect
+setting.x=X
+setting.x.description=Set the x position
+setting.y=Y
+setting.y.description=Set the y position
+setting.z=Z
+setting.z.description=Set the z position
+setting.scale=Scale
+setting.scale.description=Set the scale
+setting.vanillaposition=Vanilla Position
+setting.vanillaposition.description=Set to the Position of Vanilla
+setting.blurtype=Blur Type
+setting.blurtype.description=Set the blur type
+setting.fastblur=Fast Blur
+setting.normalblur=Normal Blur
+setting.ytdlppath=Ytdlp Path
+setting.ytdlppath.description=Set the ytdlp path
+setting.ffmpegpath=FFmpeg Path
+setting.ffmpegpath.description=Set the ffmpeg path
+setting.ytdlpcommand=Ytdlp Command
+setting.ytdlpcommand.description=Set the ytdlp command
+setting.gamma=Gamma
+setting.gamma.description=Set the gamma
+setting.opacity=Opacity
+setting.opacity.description=Set the opacity
+setting.left=Left
+setting.right=Right
+setting.delay=Delay
+setting.delay.description=Set the delay time in seconds
+setting.message=Message
+setting.message.description=Set the message to send
+setting.hypixel=Hypixel
+setting.hypixel.description=Enable for Hypixel server

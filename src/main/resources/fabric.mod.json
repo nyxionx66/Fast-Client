@@ -1,0 +1,22 @@
+{
+	"schemaVersion": 1,
+	"id": "fastclient",
+	"version": "${version}",
+	"name": "FastClient",
+	"description": "Modern and powerful client for Minecraft PvP",
+	"authors": [
+		"EldoDebug"
+	],
+	"contact": {
+		"homepage": "https://fastclient.com/"
+	},
+	"environment": "*",
+	"mixins": [
+		"fast.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"fabric": "*",
+		"minecraft": "1.21.4"
+	}
+}

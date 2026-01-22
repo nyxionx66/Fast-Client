@@ -1,0 +1,32 @@
+# Gradle
+.gradle
+build
+run/
+.skidfuscator
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Eclipse
+.classpath
+.settings/
+.project
+.factorypath
+
+# OS Specific
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+build_log.txt
+
+# Local files
+.local
