@@ -4,7 +4,7 @@ build
 run/
 .skidfuscator
 gradle
-src/main/resources/assets/fastclient/fonts
+src/main/resources/assets/fast/
 # IntelliJ IDEA
 .idea/
 *.iws
