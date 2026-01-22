@@ -26,7 +26,7 @@ public class ModMenuSettings extends Mod {
 	private BooleanSetting darkModeSetting = new BooleanSetting("setting.darkmode", "setting.darkmode.description",
 			Icon.DARK_MODE, this, true);
 	private HctColorSetting hctColorSetting = new HctColorSetting("setting.color", "setting.color.description",
-			Icon.PALETTE, this, Hct.fromInt(0xFFE65100));
+			Icon.PALETTE, this, Hct.fromInt(0xFFFF843F));
 	private BooleanSetting blurSetting = new BooleanSetting("setting.blur", "setting.blur.description", Icon.LENS_BLUR,
 			this, true);
 	private NumberSetting blurIntensitySetting = new NumberSetting("setting.blurintensity",
