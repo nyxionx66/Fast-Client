@@ -111,6 +111,9 @@ public class ModsPage extends Page {
 			Skia.drawRoundedRectVarying(itemX, itemY, cardWidth, iconHeight, 26, 26, 0, 0, palette.getSurface());
 			Skia.drawRoundedRectVarying(itemX, itemY + iconHeight, cardWidth, 35, 0, 0, 26, 26, palette.getSurfaceContainerLow());
 
+			// White border around module cards
+			Skia.drawOutline(itemX, itemY, cardWidth, cardHeight, 26, 1, new java.awt.Color(255, 255, 255, 51));
+
 			// Orange hover effect
 			if (focusAnimation.getValue() > 0) {
 				Skia.drawOutline(itemX, itemY, cardWidth, cardHeight, 26, 2,
