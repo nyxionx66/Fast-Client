@@ -84,7 +84,6 @@ public class MusicPage extends Page {
 		MusicManager musicManager = Fast.getInstance().getMusicManager();
 		ColorPalette palette = Fast.getInstance().getColorManager().getPalette();
 
-		// Empty state when no music
 		if (items.isEmpty()) {
 			Skia.drawFullCenteredText(Icon.MUSIC_OFF, x + (width / 2), y + (height / 2) - 30,
 					palette.getOnSurfaceVariant(), Fonts.getIcon(72));
@@ -168,14 +167,12 @@ public class MusicPage extends Page {
 
 		Skia.save();
 		Skia.translate(0, 100 - (controlBarAnimation.getValue() * 100));
-		// Update controlBar position dynamically for window resize
 		controlBar.setX(x + 22);
 		controlBar.setY(y + height - 60 - 18);
 		controlBar.setWidth(width - 44);
 		controlBar.draw(mouseX, mouseY);
 		Skia.restore();
 
-		// Update refresh button position dynamically
 		refreshButton.setX(searchBar.getX() - refreshButton.getWidth() - 8);
 		refreshButton.setY(searchBar.getY());
 		refreshButton.draw(mouseX, mouseY);

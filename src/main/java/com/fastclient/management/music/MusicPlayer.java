@@ -116,7 +116,6 @@ public class MusicPlayer implements Runnable {
 			audioInputStream = AudioSystem.getAudioInputStream(audioFile);
 			AudioFormat baseFormat = audioInputStream.getFormat();
 			
-			// Try to get duration from properties
 			javax.sound.sampled.AudioFileFormat fileFormat = AudioSystem.getAudioFileFormat(audioFile);
 			if (fileFormat instanceof javax.sound.sampled.AudioFileFormat) {
 				java.util.Map<String, Object> properties = fileFormat.properties();
@@ -127,7 +126,6 @@ public class MusicPlayer implements Runnable {
 				}
 			}
 			
-			// Fallback: Estimate from file size if duration missing
 			if (mp3EndTime <= 0) {
 				long fileSize = audioFile.length();
 				int frameSize = baseFormat.getFrameSize();
@@ -135,13 +133,10 @@ public class MusicPlayer implements Runnable {
 				if (frameSize > 0 && frameRate > 0) {
 					mp3EndTime = (fileSize / (float)frameSize) / frameRate;
 				} else {
-					// Fallback for variable bitrate: assume 128kbps average
-					// Size (bits) / 128000
 					mp3EndTime = (fileSize * 8) / 128000.0f;
 				}
 			}
 			
-			// Decode MP3 to PCM
 			AudioFormat decodedFormat = new AudioFormat(
 					AudioFormat.Encoding.PCM_SIGNED,
 					baseFormat.getSampleRate(),
@@ -259,7 +254,6 @@ public class MusicPlayer implements Runnable {
 	}
 
 	public float getEndTime() {
-		// For FLAC files
 		if (streamInfo != null) {
 			long totalSamples = streamInfo.getTotalSamples();
 			int sampleRate = streamInfo.getSampleRate();
@@ -269,7 +263,6 @@ public class MusicPlayer implements Runnable {
 			}
 		}
 		
-		// For MP3 files
 		if (mp3EndTime > 0) {
 			return mp3EndTime;
 		}

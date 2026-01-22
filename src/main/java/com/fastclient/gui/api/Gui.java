@@ -154,7 +154,6 @@ public abstract class Gui extends SimpleGui {
 
 	@Override
 	public void mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
-		// Check if NavigationRail should handle the scroll first (exclusive handling)
 		boolean scrollHandled = false;
 		for (Component c : components) {
 			if (c instanceof com.fastclient.gui.modmenu.component.NavigationRail) {
@@ -165,7 +164,6 @@ public abstract class Gui extends SimpleGui {
 			}
 		}
 		
-		// Only scroll the page if the sidebar didn't handle the scroll
 		if (!scrollHandled && currentPage != null) {
 			currentPage.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);
 		}

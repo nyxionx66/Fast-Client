@@ -52,10 +52,8 @@ public class SearchBar extends Component {
 
 		float hintTextValue = hintTextAnimation.getValue();
 
-		// Draw search bar background
 		Skia.drawRoundedRect(x, y, width, height, 20, palette.getSurface());
 		
-		// Draw orange accent border when focused
 		if (isFocused()) {
 			Skia.drawOutline(x, y, width, height, 20, 2, palette.getPrimary());
 		}

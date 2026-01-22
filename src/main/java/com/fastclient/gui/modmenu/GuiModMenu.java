@@ -30,12 +30,9 @@ public class GuiModMenu extends Gui {
 
 	@Override
 	public void draw(double mouseX, double mouseY) {
-		// Update NavigationRail position and size dynamically for window resize
 		navigationRail.setX(getX());
 		navigationRail.setY(getY());
 		navigationRail.setHeight(getHeight());
-		
-		// Also update current page size for responsive layout
 		if (currentPage != null) {
 			setPageSize(currentPage);
 		}
@@ -79,7 +76,6 @@ public class GuiModMenu extends Gui {
 
 	@Override
 	public float getWidth() {
-		// Responsive: 85% of window width, clamped between 600 and 1200
 		float windowWidth = client.getWindow().getWidth();
 		float targetWidth = windowWidth * 0.85F;
 		return Math.max(600, Math.min(1200, targetWidth));
@@ -87,7 +83,6 @@ public class GuiModMenu extends Gui {
 
 	@Override
 	public float getHeight() {
-		// Responsive: 80% of window height, clamped between 400 and 700
 		float windowHeight = client.getWindow().getHeight();
 		float targetHeight = windowHeight * 0.80F;
 		return Math.max(400, Math.min(700, targetHeight));

@@ -77,13 +77,13 @@ public class NavigationRail extends Component {
 
 		ColorPalette palette = Fast.getInstance().getColorManager().getPalette();
 
-		// Update editButton position dynamically for window resize
 		editButton.setX(x + (width / 2) - (editButton.getWidth() / 2));
 		editButton.setY(y + 44);
 
 		Skia.drawRoundedRectVarying(x, y, width, height, 35, 0, 0, 35, palette.getSurface());
 
-		// Draw subtle orange outline glow around edit button
+		Skia.drawRect(x + width - 1, y, 1, height, Color.WHITE);
+
 		float btnX = editButton.getX();
 		float btnY = editButton.getY();
 		float btnW = editButton.getWidth();
@@ -93,7 +93,6 @@ public class NavigationRail extends Component {
 
 		editButton.draw(mouseX, mouseY);
 
-		// Scrollable navigation area
 		float navStartY = 120;
 		float navItemHeight = 68;
 		float availableNavHeight = height - navStartY - 10;
@@ -125,25 +124,20 @@ public class NavigationRail extends Component {
 			float selWidth = 56;
 			float selHeight = 32;
 			float adjustedY = y + offsetY + scrollHelper.getValue();
-			boolean focus = MouseUtils.isInside(mouseX, mouseY, x + (width / 2) - (selWidth / 2), adjustedY, selWidth,
-					selHeight) || n.pressed;
-
-			n.focusAnimation.onTick(focus ? n.pressed ? 0.12F : 0.08F : 0, 8);
-
-			Skia.drawRoundedRect(x + (width / 2) - (selWidth / 2), y + offsetY, selWidth, selHeight, 16,
-					ColorUtils.applyAlpha(palette.getOnSurfaceVariant(), n.focusAnimation.getValue()));
-
-			if (animation.getEnd() != 0 || !animation.isFinished()) {
-				Skia.drawRoundedRect(
-						x + (width / 2) - (selWidth / 2) + (selWidth - selWidth * animation.getValue()) / 2,
-						y + offsetY, selWidth * animation.getValue(), selHeight, 16,
-						ColorUtils.applyAlpha(palette.getSecondaryContainer(), animation.getValue()));
-			}
+			boolean isActive = currentNavigation.equals(n);
 
 			Skia.drawText(icon, x + (width / 2) - (iconWidth / 2), y + (offsetY + (selHeight / 2)) - (iconHeight / 2),
 					c0, font);
 			Skia.drawCenteredText(I18n.get(title), x + (width / 2), y + offsetY + selHeight + 5, c1,
 					Fonts.getMedium(12));
+
+			if (isActive) {
+				float barWidth = 32;
+				float barHeight = 3;
+				float barX = x + (width / 2) - (barWidth / 2);
+				float barY = y + offsetY + selHeight + 18;
+				Skia.drawRoundedRect(barX, barY, barWidth, barHeight, 1.5F, palette.getPrimary());
+			}
 
 			offsetY += navItemHeight;
 		}
@@ -198,9 +192,9 @@ public class NavigationRail extends Component {
 	public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
 		if (MouseUtils.isInside(mouseX, mouseY, x, y, width, height)) {
 			scrollHelper.onScroll(verticalAmount);
-			return true; // Scroll was handled by sidebar
+			return true;
 		}
-		return false; // Scroll was not handled
+		return false;
 	}
 
 	private class Navigation {

@@ -21,14 +21,12 @@ public class HomePage extends Page {
 
 		ColorPalette palette = Fast.getInstance().getColorManager().getPalette();
 
-		// Welcome message
 		Skia.drawImage("home_logo.png", x + (width / 2) - 40, y + (height / 2) - 100, 80, 80);
 		Skia.drawCenteredText("Fast Client", x + (width / 2), y + (height / 2) + 10,
 				palette.getOnSurface(), Fonts.getMedium(32));
 		Skia.drawCenteredText("Performance & Utility Client", x + (width / 2), y + (height / 2) + 40,
 				palette.getOnSurfaceVariant(), Fonts.getRegular(14));
 
-		// Quick tips
 		Skia.drawCenteredText("Right-click modules to access settings", x + (width / 2), y + height - 60,
 				palette.getOnSurfaceVariant(), Fonts.getRegular(12));
 		Skia.drawCenteredText("Use the edit button to customize your HUD", x + (width / 2), y + height - 40,

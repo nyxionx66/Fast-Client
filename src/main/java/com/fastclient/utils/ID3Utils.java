@@ -64,16 +64,12 @@ public class ID3Utils {
         int encoding = data[contentOffset];
         contentOffset++;
         
-        // Skip MIME type
         while (contentOffset < offset + 10 + frameSize && data[contentOffset] != 0) {
             contentOffset++;
         }
-        contentOffset++; // Skip null terminator
-        
-        // Skip Picture Type (1 byte)
         contentOffset++;
         
-        // Skip Description
+        contentOffset++;
         if (encoding == 0 || encoding == 3) {
             while (contentOffset < offset + 10 + frameSize && data[contentOffset] != 0) {
                 contentOffset++;
@@ -105,10 +101,8 @@ public class ID3Utils {
             case 3: charset = StandardCharsets.UTF_8; break;
             default: charset = StandardCharsets.ISO_8859_1; break;
         }
-        // Handle BOM if UTF-16
         if (encoding == 1 && frameSize > 3) {
             if ((data[offset + 11] & 0xFF) == 0xFE && (data[offset + 12] & 0xFF) == 0xFF) {
-                // Already handled by Charset usually or needs skip
             }
         }
         return new String(data, offset + 11, frameSize - 1, charset).trim();

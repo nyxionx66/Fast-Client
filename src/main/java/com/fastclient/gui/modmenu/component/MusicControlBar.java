@@ -121,7 +121,6 @@ public class MusicControlBar extends Component {
 
 		Skia.drawRoundedRect(x, y, width, height, 16, palette.getSurface());
 
-		// Recalculate button positions dynamically for responsive layout
 		float offsetY = 26;
 		float totalWidth = (buttons.size() * 22) + ((buttons.size() - 1) * 2);
 		float centerX = x + (width / 2);
@@ -133,7 +132,6 @@ public class MusicControlBar extends Component {
 			offsetX += 30;
 		}
 
-		// Recalculate urlField and downloadButton positions
 		float fieldCenterX = centerX - ((downloadButton.getWidth() + urlField.getWidth() + 8) / 2);
 		urlField.setX(fieldCenterX);
 		urlField.setY(y + 12);

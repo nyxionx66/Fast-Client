@@ -66,12 +66,10 @@ public class ProfilePage extends Page {
 
 		ColorPalette palette = Fast.getInstance().getColorManager().getPalette();
 
-		// Update addButton position dynamically for window resize
 		addButton.setX(x + width - addButton.getWidth() - 20);
 		addButton.setY(y + height - addButton.getHeight() - 20);
 		addButton.draw(mouseX, mouseY);
 
-		// Empty state when no profiles
 		if (items.isEmpty()) {
 			Skia.drawFullCenteredText(Icon.DESCRIPTION, x + (width / 2), y + (height / 2) - 30,
 					palette.getOnSurfaceVariant(), Fonts.getIcon(72));
@@ -115,14 +113,11 @@ public class ProfilePage extends Page {
 			itemX = xAnimation.getValue();
 			itemY = yAnimation.getValue();
 
-			// Check if mouse is hovering over this card
 			boolean isHovered = MouseUtils.isInside(mouseX, adjustedMouseY, itemX, itemY, cardWidth, cardHeight);
 
-			// Draw card background with subtle hover effect
 			Skia.drawRoundedRect(itemX, itemY, cardWidth, cardHeight, 16, 
 					isHovered ? palette.getSurfaceContainerHigh() : palette.getSurface());
 			
-			// Draw profile icon with larger size
 			float iconSize = 72;
 			float iconPadding = 12;
 			if (icon instanceof ProfileIcon) {
@@ -135,19 +130,17 @@ public class ProfilePage extends Page {
 						palette.getOnSurfaceVariant(), Fonts.getIconFill(32));
 			}
 			
-			// Draw profile name
 			float textX = itemX + iconPadding + iconSize + 12;
 			String profileName = Skia.getLimitText(p.getName() != null ? p.getName() : "Unnamed", Fonts.getMedium(18), cardWidth - iconSize - iconPadding * 2 - 20);
 			Skia.drawText(profileName, textX, itemY + 28, palette.getOnSurface(), Fonts.getMedium(18));
 			
-			// Draw author name if available
+			String author = p.getAuthor() != null ? p.getAuthor() : "";
 			String author = p.getAuthor() != null ? p.getAuthor() : "";
 			if (!author.isEmpty()) {
 				String limitedAuthor = Skia.getLimitText(author, Fonts.getRegular(13), cardWidth - iconSize - iconPadding * 2 - 20);
 				Skia.drawText(limitedAuthor, textX, itemY + 48, palette.getOnSurfaceVariant(), Fonts.getRegular(13));
 			}
 			
-			// Draw "click to load" hint on hover
 			if (isHovered) {
 				Skia.drawText("Click to load", textX, itemY + cardHeight - 16, palette.getPrimary(), Fonts.getRegular(11));
 			}
@@ -155,7 +148,6 @@ public class ProfilePage extends Page {
 			index++;
 			offsetX += cardGap + cardWidth;
 
-			// Calculate how many cards fit per row based on available width
 			int cardsPerRow = Math.max(1, (int)((width - 52) / (cardWidth + cardGap)));
 			if (index % cardsPerRow == 0) {
 				offsetX = 26;

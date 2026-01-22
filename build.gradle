@@ -75,7 +75,6 @@ dependencies {
 	
 	modJij 'com.github.CCBlueX:mcef:3.0.0-1.21.4'
 	
-	// MP3 support
 	jij 'javazoom:jlayer:1.0.1'
 	jij 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
 	jij 'com.googlecode.soundlibs:tritonus-share:0.3.7.4'
@@ -90,7 +89,6 @@ dependencies {
         "org.lwjgl:lwjgl-nfd::natives-windows"
     ]
     
-    // Add LWJGL NFD dependencies to both jij and implementation
     lwjglNfdDeps.each { dep ->
         jij dep
         implementation dep

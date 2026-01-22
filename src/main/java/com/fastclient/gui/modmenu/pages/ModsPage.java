@@ -59,7 +59,6 @@ public class ModsPage extends Page {
 
 		ColorPalette palette = Fast.getInstance().getColorManager().getPalette();
 
-		// Responsive layout calculations
 		float cardWidth = 200;
 		float cardHeight = 151;
 		float gap = 20;
@@ -107,14 +106,11 @@ public class ModsPage extends Page {
 
 			float iconHeight = cardHeight - 35;
 
-			// Draw card with orange accent on hover
 			Skia.drawRoundedRectVarying(itemX, itemY, cardWidth, iconHeight, 26, 26, 0, 0, palette.getSurface());
 			Skia.drawRoundedRectVarying(itemX, itemY + iconHeight, cardWidth, 35, 0, 0, 26, 26, palette.getSurfaceContainerLow());
 
-			// White border around module cards
 			Skia.drawOutline(itemX, itemY, cardWidth, cardHeight, 26, 1, new java.awt.Color(255, 255, 255, 51));
 
-			// Orange hover effect
 			if (focusAnimation.getValue() > 0) {
 				Skia.drawOutline(itemX, itemY, cardWidth, cardHeight, 26, 2,
 						ColorUtils.applyAlpha(palette.getPrimary(), focusAnimation.getValue()));
@@ -130,7 +126,6 @@ public class ModsPage extends Page {
 
 			Skia.drawFullCenteredText(I18n.get(m.getName()), itemX + (cardWidth / 2), itemY + iconHeight + (35 / 2),
 					java.awt.Color.WHITE, Fonts.getRegular(14));
-			// Use white for icon
 			Skia.drawFullCenteredText(m.getIcon(), itemX + (cardWidth / 2), itemY + (iconHeight / 2), java.awt.Color.WHITE,
 					Fonts.getIcon(56));
 

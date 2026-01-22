@@ -320,3 +320,7 @@ setting.showdurability=Show Durability
 setting.showdurability.description=Display durability values for each armor piece
 setting.showemptyslots=Show Empty Slots
 setting.showemptyslots.description=Show empty armor slots in the display
+
+# Orientation options
+option.vertical=Vertical
+option.horizontal=Horizontal

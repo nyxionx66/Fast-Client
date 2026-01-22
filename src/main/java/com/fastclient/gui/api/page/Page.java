@@ -33,7 +33,6 @@ public class Page extends SimplePage {
 
 		scrollHelper.onUpdate();
 
-		// Update search bar position dynamically for window resize
 		searchBar.setX(x + width - 260 - 32);
 		searchBar.setY(y + 32);
 

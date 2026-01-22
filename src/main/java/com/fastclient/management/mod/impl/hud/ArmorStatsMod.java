@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 
 import java.awt.Color;
 
+
 public class ArmorStatsMod extends HUDMod {
 
 	private ComboSetting orientationSetting;
@@ -27,9 +28,8 @@ public class ArmorStatsMod extends HUDMod {
 	public ArmorStatsMod() {
 		super("mod.armorstats.name", "mod.armorstats.description", Icon.SHIELD);
 		
-		// Initialize settings in constructor to ensure 'this' is fully constructed
 		orientationSetting = new ComboSetting("setting.orientation", "setting.orientation.description",
-				Icon.VIEW_AGENDA, this, Arrays.asList("Vertical", "Horizontal"), "Vertical");
+				Icon.VIEW_AGENDA, this, Arrays.asList("option.vertical", "option.horizontal"), "option.vertical");
 		showDurabilitySetting = new BooleanSetting("setting.showdurability", "setting.showdurability.description",
 				Icon.SHOW_CHART, this, true);
 		showEmptySlotsSetting = new BooleanSetting("setting.showemptyslots", "setting.showemptyslots.description",
@@ -47,11 +47,10 @@ public class ArmorStatsMod extends HUDMod {
 		float itemSpacing = 3;
 		float itemSize = 16;
 		
-		boolean isVertical = "Vertical".equals(orientationSetting.getOption());
+		boolean isVertical = "option.vertical".equals(orientationSetting.getOption());
 		boolean showDurability = showDurabilitySetting.isEnabled();
 		boolean showEmpty = showEmptySlotsSetting.isEnabled();
 		
-		// Get armor items (head to feet order for display)
 		ItemStack[] armorPieces = {
 			client.player.getEquippedStack(EquipmentSlot.HEAD),
 			client.player.getEquippedStack(EquipmentSlot.CHEST),
@@ -59,9 +58,8 @@ public class ArmorStatsMod extends HUDMod {
 			client.player.getEquippedStack(EquipmentSlot.FEET)
 		};
 		
-		String[] slotIcons = {Icon.FACE, Icon.CHECKROOM, Icon.ACCESSIBILITY, Icon.DO_NOT_STEP};
+		String[] slotIcons = {"armor_helmet.png", "armor_chestplate.png", "armor_leggings.png", "armor_boots.png"};
 		
-		// Count visible items
 		int visibleCount = 0;
 		for (ItemStack stack : armorPieces) {
 			if (!stack.isEmpty() || showEmpty) visibleCount++;
@@ -75,7 +73,6 @@ public class ArmorStatsMod extends HUDMod {
 		FontMetrics metrics = Fonts.getRegular(fontSize).getMetrics();
 		float textCenterY = (metrics.getAscent() - metrics.getDescent()) / 2 - metrics.getAscent();
 		
-		// Calculate dimensions
 		float maxTextWidth = 0;
 		for (int i = 0; i < armorPieces.length; i++) {
 			ItemStack stack = armorPieces[i];
@@ -101,7 +98,7 @@ public class ArmorStatsMod extends HUDMod {
 				Rect bounds = Skia.getTextBounds(text, Fonts.getRegular(fontSize));
 				totalWidth += itemSize + 4 + bounds.getWidth();
 			}
-			totalWidth += (visibleCount - 1) * 10; // spacing between items
+			totalWidth += (visibleCount - 1) * 10; 
 			width = totalWidth + (padding * 2);
 			height = itemSize + (padding * 2);
 		}
@@ -117,22 +114,20 @@ public class ArmorStatsMod extends HUDMod {
 			if (stack.isEmpty() && !showEmpty) continue;
 			
 			String text = getArmorText(stack, showDurability);
-			String icon = stack.isEmpty() ? slotIcons[i] : Icon.SHIELD;
+			String iconPath = slotIcons[i];
 			Rect textBounds = Skia.getTextBounds(text, Fonts.getRegular(fontSize));
 			
 			float itemX, itemY;
+			float iconSize = 16;
 			
 			if (isVertical) {
 				itemX = getX() + padding;
 				itemY = getY() + padding + offsetY;
 				
-				// Draw icon
-				this.drawText(icon, itemX, itemY + (itemSize / 2) - 5, Fonts.getIcon(10));
+				Skia.drawImage(iconPath, itemX, itemY, iconSize, iconSize);
 				
-				// Draw text
 				this.drawText(text, itemX + itemSize + 4, itemY + (itemSize / 2) - textCenterY, Fonts.getRegular(fontSize));
 				
-				// Draw durability bar if armor has durability
 				if (showDurability && !stack.isEmpty() && stack.getMaxDamage() > 0) {
 					float durabilityPercent = 1.0f - ((float) stack.getDamage() / stack.getMaxDamage());
 					float barWidth = textBounds.getWidth();
@@ -140,9 +135,7 @@ public class ArmorStatsMod extends HUDMod {
 					float barX = itemX + itemSize + 4;
 					float barY = itemY + itemSize - 3;
 					
-					// Background bar
 					Skia.drawRoundedRect(barX, barY, barWidth, barHeight, 1, new Color(255, 255, 255, 68));
-					// Durability bar with color based on durability
 					Color barColor = getDurabilityColor(durabilityPercent);
 					Skia.drawRoundedRect(barX, barY, barWidth * durabilityPercent, barHeight, 1, barColor);
 				}
@@ -152,10 +145,8 @@ public class ArmorStatsMod extends HUDMod {
 				itemX = getX() + padding + offsetX;
 				itemY = getY() + padding;
 				
-				// Draw icon
-				this.drawText(icon, itemX, itemY + (itemSize / 2) - 5, Fonts.getIcon(10));
+				Skia.drawImage(iconPath, itemX, itemY, iconSize, iconSize);
 				
-				// Draw text
 				this.drawText(text, itemX + itemSize + 4, itemY + (itemSize / 2) - textCenterY, Fonts.getRegular(fontSize));
 				
 				offsetX += itemSize + 4 + textBounds.getWidth() + 10;
@@ -172,7 +163,6 @@ public class ArmorStatsMod extends HUDMod {
 		}
 		
 		String name = stack.getName().getString();
-		// Shorten armor names
 		name = name.replace(" Helmet", "").replace(" Chestplate", "").replace(" Leggings", "").replace(" Boots", "");
 		
 		if (showDurability && stack.getMaxDamage() > 0) {
@@ -185,11 +175,11 @@ public class ArmorStatsMod extends HUDMod {
 	
 	private Color getDurabilityColor(float percent) {
 		if (percent > 0.5f) {
-			return new Color(85, 255, 85); // Green
+			return new Color(85, 255, 85);
 		} else if (percent > 0.25f) {
-			return new Color(255, 255, 85); // Yellow
+			return new Color(255, 255, 85); 
 		} else {
-			return new Color(255, 85, 85); // Red
+			return new Color(255, 85, 85);
 		}
 	}
 
