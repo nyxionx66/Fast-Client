@@ -12,6 +12,10 @@ import io.github.humbleui.skija.Font;
 
 public class MaterialYouDesign extends HUDDesign {
 
+	// FastClient orange theme text color
+	private static final Color TEXT_ORANGE = new Color(0xED, 0x79, 0x3B);
+	private static final Color ON_TEXT_BLACK = new Color(0x00, 0x00, 0x00);
+
 	public MaterialYouDesign() {
 		super("design.materialyou");
 	}
@@ -23,9 +27,10 @@ public class MaterialYouDesign extends HUDDesign {
 
 		Skia.drawRoundedBlur(x, y, width, height, radius);
 		Skia.drawShadow(x, y, width, height, radius);
+		// Use FastClient orange gradient theme
 		Skia.drawGradientRoundedRect(x, y, width, height, radius,
-				ColorUtils.applyAlpha(palette.getPrimaryContainer(), 180),
-				ColorUtils.applyAlpha(palette.getTertiaryContainer(), 180));
+				ColorUtils.applyAlpha(palette.getPrimaryContainer(), 200),
+				ColorUtils.applyAlpha(palette.getTertiaryContainer(), 200));
 	}
 
 	@Override
@@ -35,11 +40,12 @@ public class MaterialYouDesign extends HUDDesign {
 
 	@Override
 	public Color getTextColor() {
-		return Color.WHITE;
+		// Use orange text for FastClient theme
+		return TEXT_ORANGE;
 	}
 
 	@Override
 	public Color getOnTextColor() {
-		return Color.BLACK;
+		return ON_TEXT_BLACK;
 	}
 }

@@ -15,6 +15,42 @@ public class ColorPalette {
 	private boolean dark;
 	private Hct hct;
 
+	// FastClient Launcher Color Scheme
+	// Primary orange: #ff843f
+	// Yellow: #ffc11d
+	// Text orange: #ed793b
+	// Background black: #000000
+	// Hover button: #221511
+	
+	// Custom colors for FastClient theme
+	private static final Color ORANGE_PRIMARY = new Color(0xFF, 0x84, 0x3F);           // ff843f - main orange
+	private static final Color YELLOW_ACCENT = new Color(0xFF, 0xC1, 0x1D);            // ffc11d - yellow
+	private static final Color TEXT_ORANGE = new Color(0xED, 0x79, 0x3B);              // ed793b - text orange
+	private static final Color BACKGROUND_BLACK = new Color(0x00, 0x00, 0x00);         // 000000 - black background
+	private static final Color HOVER_BUTTON = new Color(0x22, 0x15, 0x11);             // 221511 - hover color
+	
+	// Derived colors for dark theme
+	private static final Color SURFACE_DARK = new Color(0x0D, 0x0D, 0x0D);             // Very dark surface
+	private static final Color SURFACE_CONTAINER_DARK = new Color(0x1A, 0x14, 0x10);   // Dark brown-tinted surface
+	private static final Color SURFACE_CONTAINER_HIGH = new Color(0x25, 0x1C, 0x16);   // Slightly lighter
+	private static final Color SURFACE_CONTAINER_HIGHEST = new Color(0x30, 0x24, 0x1C);// Even lighter
+	private static final Color SURFACE_CONTAINER_LOW = new Color(0x14, 0x10, 0x0C);    // Darker surface
+	private static final Color SURFACE_CONTAINER_LOWEST = new Color(0x0A, 0x08, 0x06); // Darkest surface
+	private static final Color OUTLINE_COLOR = new Color(0x5A, 0x4A, 0x3A);            // Brown outline
+	private static final Color OUTLINE_VARIANT = new Color(0x3A, 0x2E, 0x24);          // Darker outline variant
+	private static final Color ON_SURFACE = new Color(0xE8, 0xE0, 0xD8);               // Light text on dark
+	private static final Color ON_SURFACE_VARIANT = new Color(0xB0, 0xA0, 0x90);       // Muted text
+	
+	// Container colors (darker versions of primary colors)
+	private static final Color PRIMARY_CONTAINER = new Color(0x4A, 0x28, 0x14);        // Dark orange container
+	private static final Color SECONDARY_CONTAINER = new Color(0x4A, 0x38, 0x0A);      // Dark yellow container
+	private static final Color TERTIARY_CONTAINER = new Color(0x3A, 0x24, 0x14);       // Dark brown container
+	
+	// On container colors (light text on containers)
+	private static final Color ON_PRIMARY_CONTAINER = new Color(0xFF, 0xD0, 0xB0);     // Light orange
+	private static final Color ON_SECONDARY_CONTAINER = new Color(0xFF, 0xE8, 0xA0);   // Light yellow
+	private static final Color ON_TERTIARY_CONTAINER = new Color(0xE8, 0xC8, 0xA8);    // Light brown
+
 	public ColorPalette(Hct hct, boolean dark, float contrast) {
 		this.hct = hct;
 		this.dark = dark;
@@ -27,123 +63,123 @@ public class ColorPalette {
 	}
 
 	public Color getPrimary() {
-		return argbToColor(colors.primary().getArgb(scheme));
+		return ORANGE_PRIMARY;
 	}
 
 	public Color getSecondary() {
-		return argbToColor(colors.secondary().getArgb(scheme));
+		return YELLOW_ACCENT;
 	}
 
 	public Color getTertiary() {
-		return argbToColor(colors.tertiary().getArgb(scheme));
+		return TEXT_ORANGE;
 	}
 
 	public Color getPrimaryContainer() {
-		return argbToColor(colors.primaryContainer().getArgb(scheme));
+		return PRIMARY_CONTAINER;
 	}
 
 	public Color getSecondaryContainer() {
-		return argbToColor(colors.secondaryContainer().getArgb(scheme));
+		return SECONDARY_CONTAINER;
 	}
 
 	public Color getTertiaryContainer() {
-		return argbToColor(colors.tertiaryContainer().getArgb(scheme));
+		return TERTIARY_CONTAINER;
 	}
 
 	public Color getOnPrimary() {
-		return argbToColor(colors.onPrimary().getArgb(scheme));
+		return BACKGROUND_BLACK;
 	}
 
 	public Color getOnSecondary() {
-		return argbToColor(colors.onSecondary().getArgb(scheme));
+		return BACKGROUND_BLACK;
 	}
 
 	public Color getOnTertiary() {
-		return argbToColor(colors.onTertiary().getArgb(scheme));
+		return BACKGROUND_BLACK;
 	}
 
 	public Color getOnPrimaryContainer() {
-		return argbToColor(colors.onPrimaryContainer().getArgb(scheme));
+		return ON_PRIMARY_CONTAINER;
 	}
 
 	public Color getOnSecondaryContainer() {
-		return argbToColor(colors.onSecondaryContainer().getArgb(scheme));
+		return ON_SECONDARY_CONTAINER;
 	}
 
 	public Color getOnTertiaryContainer() {
-		return argbToColor(colors.onTertiaryContainer().getArgb(scheme));
+		return ON_TERTIARY_CONTAINER;
 	}
 
 	public Color getError() {
-		return argbToColor(colors.error().getArgb(scheme));
+		return new Color(0xFF, 0x5A, 0x5A);
 	}
 
 	public Color getErrorContainer() {
-		return argbToColor(colors.errorContainer().getArgb(scheme));
+		return new Color(0x4A, 0x1A, 0x1A);
 	}
 
 	public Color getOnError() {
-		return argbToColor(colors.onError().getArgb(scheme));
+		return BACKGROUND_BLACK;
 	}
 
 	public Color getOnErrorContainer() {
-		return argbToColor(colors.onErrorContainer().getArgb(scheme));
+		return new Color(0xFF, 0xC0, 0xC0);
 	}
 
 	public Color getBackground() {
-		return argbToColor(colors.background().getArgb(scheme));
+		return BACKGROUND_BLACK;
 	}
 
 	public Color getOnBackground() {
-		return argbToColor(colors.onBackground().getArgb(scheme));
+		return ON_SURFACE;
 	}
 
 	public Color getSurface() {
-		return argbToColor(colors.surface().getArgb(scheme));
+		return SURFACE_DARK;
 	}
 
 	public Color getOnSurface() {
-		return argbToColor(colors.onSurface().getArgb(scheme));
+		return ON_SURFACE;
 	}
 
 	public Color getSurfaceContainer() {
-		return argbToColor(colors.surfaceContainer().getArgb(scheme));
+		return SURFACE_CONTAINER_DARK;
 	}
 
 	public Color getSurfaceVariant() {
-		return argbToColor(colors.surfaceVariant().getArgb(scheme));
+		return HOVER_BUTTON;
 	}
 
 	public Color getOnSurfaceVariant() {
-		return argbToColor(colors.onSurfaceVariant().getArgb(scheme));
+		return ON_SURFACE_VARIANT;
 	}
 
 	public Color getSurfaceContainerHigh() {
-		return argbToColor(colors.surfaceContainerHigh().getArgb(scheme));
+		return SURFACE_CONTAINER_HIGH;
 	}
 
 	public Color getSurfaceContainerHighest() {
-		return argbToColor(colors.surfaceContainerHighest().getArgb(scheme));
+		return SURFACE_CONTAINER_HIGHEST;
 	}
 
 	public Color getSurfaceContainerLow() {
-		return argbToColor(colors.surfaceContainerLow().getArgb(scheme));
+		return SURFACE_CONTAINER_LOW;
 	}
 
 	public Color getSurfaceContainerLowest() {
-		return argbToColor(colors.surfaceContainerLowest().getArgb(scheme));
+		return SURFACE_CONTAINER_LOWEST;
 	}
 
 	public Color getSurfaceTint() {
-		return argbToColor(colors.surfaceTint().getArgb(scheme));
+		return ORANGE_PRIMARY;
 	}
 
 	public Color getOutline() {
-		return argbToColor(colors.outline().getArgb(scheme));
+		return OUTLINE_COLOR;
 	}
 
 	public Color getOutlineVariant() {
-		return argbToColor(colors.outlineVariant().getArgb(scheme));
+		return OUTLINE_VARIANT;
 	}
 
 	private Color argbToColor(int argb) {
