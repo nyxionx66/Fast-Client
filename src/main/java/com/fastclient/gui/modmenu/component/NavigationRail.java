@@ -118,8 +118,8 @@ public class NavigationRail extends Component {
 			float iconWidth = bounds.getWidth();
 			float iconHeight = bounds.getHeight();
 
-			java.awt.Color c0 = currentNavigation.equals(n) ? java.awt.Color.WHITE : new java.awt.Color(170, 170, 170);
-			java.awt.Color c1 = currentNavigation.equals(n) ? java.awt.Color.WHITE : new java.awt.Color(170, 170, 170);
+			java.awt.Color c0 = java.awt.Color.WHITE;
+			java.awt.Color c1 = java.awt.Color.WHITE;
 
 			Animation animation = n.animation;
 			float selWidth = 56;

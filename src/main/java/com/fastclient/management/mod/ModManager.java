@@ -10,6 +10,7 @@ import com.fastclient.management.mod.api.hud.design.impl.ClassicDesign;
 import com.fastclient.management.mod.api.hud.design.impl.ClearDesign;
 import com.fastclient.management.mod.api.hud.design.impl.MaterialYouDesign;
 import com.fastclient.management.mod.api.hud.design.impl.SimpleDesign;
+import com.fastclient.management.mod.impl.hud.ArmorStatsMod;
 import com.fastclient.management.mod.impl.hud.BedwarsStatsOverlayMod;
 import com.fastclient.management.mod.impl.hud.BossBarMod;
 import com.fastclient.management.mod.impl.hud.ClockMod;
@@ -79,6 +80,7 @@ public class ModManager {
 	private void initMods() {
 
 		// HUD
+		mods.add(new ArmorStatsMod());
 		mods.add(new BedwarsStatsOverlayMod());
 		mods.add(new BossBarMod());
 		mods.add(new ClockMod());

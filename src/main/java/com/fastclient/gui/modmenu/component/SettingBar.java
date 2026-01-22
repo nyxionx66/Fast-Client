@@ -185,8 +185,8 @@ public class SettingBar extends Component {
 
 		Skia.drawRoundedRect(x, itemY, width, height, 18, palette.getSurface());
 		Skia.drawFullCenteredText(icon, x + 30, itemY + (height / 2), java.awt.Color.WHITE, Fonts.getIcon(32));
-		Skia.drawText(I18n.get(title), x + 52, itemY + 20, new java.awt.Color(230, 230, 230), Fonts.getRegular(17));
-		Skia.drawText(I18n.get(description), x + 52, itemY + 37, new java.awt.Color(170, 170, 170), Fonts.getRegular(14));
+		Skia.drawText(I18n.get(title), x + 52, itemY + 20, java.awt.Color.WHITE, Fonts.getRegular(17));
+		Skia.drawText(I18n.get(description), x + 52, itemY + 37, java.awt.Color.WHITE, Fonts.getRegular(14));
 
 		if (component != null) {
 			component.draw(mouseX, mouseY);

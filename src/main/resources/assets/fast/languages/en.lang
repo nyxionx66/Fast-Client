@@ -312,3 +312,7 @@ setting.message=Message
 setting.message.description=Set the message to send
 setting.hypixel=Hypixel
 setting.hypixel.description=Enable for Hypixel server
+mod.armorstats.name=Armor Stats
+mod.armorstats.description=Display armor protection and toughness
+setting.orientation=Orientation
+setting.orientation.description=Set the display orientation
