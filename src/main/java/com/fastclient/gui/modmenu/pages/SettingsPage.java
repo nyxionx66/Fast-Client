@@ -64,12 +64,12 @@ public class SettingsPage extends Page {
 			itemY = yAnimation.getValue();
 
 			Skia.drawRoundedRect(x + 32, itemY, width - 64, 68, 18, palette.getSurface());
-			Skia.drawFullCenteredText(m.getIcon(), x + 32 + 30, itemY + (68 / 2), palette.getOnSurface(),
+			Skia.drawFullCenteredText(m.getIcon(), x + 32 + 30, itemY + (68 / 2), java.awt.Color.WHITE,
 					Fonts.getIcon(32));
-			Skia.drawText(I18n.get(m.getName()), x + 32 + 52, itemY + 20, palette.getOnSurface(), Fonts.getRegular(17));
-			Skia.drawText(I18n.get(m.getDescription()), x + 32 + 52, itemY + 37, palette.getOnSurfaceVariant(),
+			Skia.drawText(I18n.get(m.getName()), x + 32 + 52, itemY + 20, new java.awt.Color(230, 230, 230), Fonts.getRegular(17));
+			Skia.drawText(I18n.get(m.getDescription()), x + 32 + 52, itemY + 37, new java.awt.Color(170, 170, 170),
 					Fonts.getRegular(14));
-			Skia.drawHeightCenteredText(">", x + width - 54, itemY + (68 / 2), palette.getOnSurface(),
+			Skia.drawHeightCenteredText(">", x + width - 54, itemY + (68 / 2), java.awt.Color.WHITE,
 					Fonts.getRegular(20));
 
 			offsetY += 68 + 18;

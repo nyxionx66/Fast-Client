@@ -159,8 +159,8 @@ public class MusicControlBar extends Component {
 			String limitedTitle = Skia.getLimitText(music.getTitle(), Fonts.getRegular(16), 170);
 			String limitedArtist = Skia.getLimitText(music.getArtist(), Fonts.getRegular(12), 170);
 
-			Skia.drawText(limitedTitle, x + 66, y + 17, palette.getOnSurface(), Fonts.getRegular(16));
-			Skia.drawText(limitedArtist, x + 66, y + 34, palette.getOnSurfaceVariant(), Fonts.getRegular(12));
+			Skia.drawText(limitedTitle, x + 66, y + 17, new java.awt.Color(230, 230, 230), Fonts.getRegular(16));
+			Skia.drawText(limitedArtist, x + 66, y + 34, new java.awt.Color(170, 170, 170), Fonts.getRegular(12));
 		}
 
 		float seekWidth = 308;
@@ -169,8 +169,8 @@ public class MusicControlBar extends Component {
 		drawSeekBar(x + (width / 2) - (seekWidth / 2), y + height - seekHeight - 12, seekWidth, seekHeight);
 
 		buttons.get(2).icon = musicManager.isPlaying() ? Icon.PAUSE : Icon.PLAY_ARROW;
-		buttons.get(0).color = musicManager.isRepeat() ? palette.getPrimary() : palette.getOnSurface();
-		buttons.get(4).color = musicManager.isShuffle() ? palette.getPrimary() : palette.getOnSurface();
+		buttons.get(0).color = musicManager.isRepeat() ? palette.getPrimary() : java.awt.Color.WHITE;
+		buttons.get(4).color = musicManager.isShuffle() ? palette.getPrimary() : java.awt.Color.WHITE;
 
 		for (ControlButton b : buttons) {
 			b.draw(mouseX, mouseY);
@@ -191,7 +191,7 @@ public class MusicControlBar extends Component {
 		String icon = addMusic ? Icon.CLOSE : Icon.DOWNLOAD;
 		float iconWidth = Skia.getTextBounds(icon, Fonts.getRegular(24)).getWidth();
 
-		Skia.drawText(icon, x + width - iconWidth - 8, y + 8, palette.getOnSurface(), Fonts.getIcon(24));
+		Skia.drawText(icon, x + width - iconWidth - 8, y + 8, java.awt.Color.WHITE, Fonts.getIcon(24));
 	}
 
 	private void drawSeekBar(float x, float y, float width, float height) {
@@ -272,7 +272,7 @@ public class MusicControlBar extends Component {
 			this.width = 26;
 			this.height = 26;
 			this.task = task;
-			this.color = Fast.getInstance().getColorManager().getPalette().getOnSurface();
+			this.color = java.awt.Color.WHITE;
 		}
 
 		@Override

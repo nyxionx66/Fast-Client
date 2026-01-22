@@ -126,9 +126,9 @@ public class ModsPage extends Page {
 			Skia.restore();
 
 			Skia.drawFullCenteredText(I18n.get(m.getName()), itemX + (cardWidth / 2), itemY + iconHeight + (35 / 2),
-					palette.getOnSurfaceVariant(), Fonts.getRegular(14));
-			// Use primary color (orange) for icon
-			Skia.drawFullCenteredText(m.getIcon(), itemX + (cardWidth / 2), itemY + (iconHeight / 2), palette.getPrimary(),
+					new java.awt.Color(200, 200, 200), Fonts.getRegular(14));
+			// Use white for icon
+			Skia.drawFullCenteredText(m.getIcon(), itemX + (cardWidth / 2), itemY + (iconHeight / 2), java.awt.Color.WHITE,
 					Fonts.getIcon(56));
 
 			index++;
