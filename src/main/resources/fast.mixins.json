@@ -2,6 +2,7 @@
 	"required": true,
 	"package": "com.fastclient.mixin.mixins",
 	"compatibilityLevel": "JAVA_21",
+	"plugin": "com.fastclient.mixin.FastMixinPlugin",
 	"client": [
 		"minecraft.client.gui.MixinBossBarHud",
 		"minecraft.client.gui.MixinMultiplayerScreen",
@@ -27,8 +28,7 @@
 		"minecraft.network.MixinClientConnection",
 		"minecraft.world.MixinBiome",
 		"minecraft.world.MixinClientWorldProperties",
-		"minecraft.world.MixinWorld",
-		"viafabricplus.MixinMinecraftClient"
+		"minecraft.world.MixinWorld"
 	],
 	"injectors": {
 		"defaultRequire": 1

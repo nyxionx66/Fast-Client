@@ -1,0 +1,12 @@
+{
+	"required": false,
+	"package": "com.fastclient.mixin.mixins",
+	"compatibilityLevel": "JAVA_21",
+	"plugin": "com.fastclient.mixin.ViaFabricPlusMixinPlugin",
+	"client": [
+		"viafabricplus.MixinMinecraftClient"
+	],
+	"injectors": {
+		"defaultRequire": 0
+	}
+}

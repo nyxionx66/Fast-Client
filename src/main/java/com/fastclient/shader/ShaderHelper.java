@@ -29,9 +29,10 @@ import static org.lwjgl.opengl.GL20C.glUniform4f;
 import java.nio.ByteBuffer;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.fastclient.mixin.mixins.minecraft.client.render.BufferRendererAccessor;
+import com.fastclient.mixin.FastMixinPlugin;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.texture.AbstractTexture;
 import net.minecraft.util.Identifier;
 
@@ -45,7 +46,19 @@ public class ShaderHelper {
 
 	public static void bindVertexArray(int vao) {
 		GlStateManager._glBindVertexArray(vao);
-		BufferRendererAccessor.setCurrentVertexBuffer(null);
+		// For MC 1.21.11+, BufferRenderer was refactored - use reset()
+		// For earlier versions, the accessor is used via mixin (handled separately)
+		if (FastMixinPlugin.is1_21_11OrLater()) {
+			BufferRenderer.reset();
+		} else {
+			// For 1.21-1.21.4, use the accessor mixin
+			try {
+				com.fastclient.mixin.mixins.minecraft.client.render.BufferRendererAccessor.setCurrentVertexBuffer(null);
+			} catch (NoClassDefFoundError | NoSuchMethodError e) {
+				// Fallback for edge cases
+				BufferRenderer.reset();
+			}
+		}
 	}
 
 	public static void bindIndexBuffer(int ibo) {

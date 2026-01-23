@@ -22,14 +22,16 @@ public class MixinPlayerEntity {
 		}
 	}
 
-	@Inject(method = "getMainArm", at = @At("HEAD"), cancellable = true)
+	// getMainArm exists in PlayerEntity for MC 1.21-1.21.4, moved to LivingEntity in 1.21.11
+	// Using require = 0 makes this optional - won't crash if method doesn't exist
+	@Inject(method = "getMainArm", at = @At("HEAD"), cancellable = true, require = 0)
 	private void injectGetMainArm(CallbackInfoReturnable<Arm> cir) {
 
 		MinecraftClient client = MinecraftClient.getInstance();
 		PlayerEntity player = client.player;
 		PlayerEntity e = ((PlayerEntity) (Object) this);
 
-		if (ForceMainHandMod.getInstance().isEnabled() && e.getId() != player.getId()) {
+		if (player != null && ForceMainHandMod.getInstance().isEnabled() && e.getId() != player.getId()) {
 			cir.setReturnValue(ForceMainHandMod.getInstance().isRightHand() ? Arm.RIGHT : Arm.LEFT);
 		}
 	}
