@@ -81,7 +81,7 @@ public class ArmorStatsMod extends HUDMod {
 			if (showDurability && !stack.isEmpty() && stack.getMaxDamage() > 0 && stack.getDamage() > 0) {
 				float durabilityPercent = 1.0f - ((float) stack.getDamage() / stack.getMaxDamage());
 				int barX = (int)(scaledX / scale) + 2;
-				int barY = (int)(scaledY / scale) + 14; // Moved down to be visible
+				int barY = (int)(scaledY / scale) + 13; // Position at bottom of 16px item slot
 				int barWidth = 13;
 				int filledWidth = Math.round(barWidth * durabilityPercent);
 				
@@ -89,7 +89,7 @@ public class ArmorStatsMod extends HUDMod {
 				context.fill(barX, barY, barX + barWidth, barY + 2, 0xFF000000);
 				// Durability bar (colored based on durability)
 				int barColor = getDurabilityBarColor(durabilityPercent);
-				context.fill(barX, barY, barX + filledWidth, barY + 1, barColor);
+				context.fill(barX, barY, barX + filledWidth, barY + 2, barColor);
 			}
 			
 			context.getMatrices().pop();
@@ -100,9 +100,11 @@ public class ArmorStatsMod extends HUDMod {
 		float padding = 5;
 		float itemSpacing = 4;
 		float itemSize = 16;
+		float durabilityBarHeight = 3; // Height for durability bar (2px bar + 1px gap)
 		
 		boolean isVertical = "option.vertical".equals(orientationSetting.getOption());
 		boolean showEmpty = showEmptySlotsSetting.isEnabled();
+		boolean showDurability = showDurabilitySetting.isEnabled();
 		
 		currentArmorPieces = new ItemStack[] {
 			client.player.getEquippedStack(EquipmentSlot.HEAD),
@@ -126,14 +128,17 @@ public class ArmorStatsMod extends HUDMod {
 			return;
 		}
 		
+		// Calculate slot height including durability bar space when enabled
+		float slotHeight = showDurability ? itemSize + durabilityBarHeight : itemSize;
+		
 		float width, height;
 		
 		if (isVertical) {
 			width = itemSize + (padding * 2);
-			height = (visibleCount * itemSize) + ((visibleCount - 1) * itemSpacing) + (padding * 2);
+			height = (visibleCount * slotHeight) + ((visibleCount - 1) * itemSpacing) + (padding * 2);
 		} else {
 			width = (visibleCount * itemSize) + ((visibleCount - 1) * itemSpacing) + (padding * 2);
-			height = itemSize + (padding * 2);
+			height = slotHeight + (padding * 2);
 		}
 		
 		this.begin();
@@ -157,7 +162,7 @@ public class ArmorStatsMod extends HUDMod {
 				itemPositionsY[i] = itemY;
 				itemVisible[i] = true;
 				
-				offsetY += itemSize + itemSpacing;
+				offsetY += slotHeight + itemSpacing;
 			} else {
 				itemX = getX() + padding + offsetX;
 				itemY = getY() + padding;
