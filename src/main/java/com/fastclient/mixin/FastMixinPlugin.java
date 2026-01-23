@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.objectweb.asm.tree.ClassNode;
-import org.spongepowered.asm.mixin.extensionpoints.IMixinConfigPlugin;
-import org.spongepowered.asm.mixin.extensionpoints.IMixinInfo;
+import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.Version;
@@ -56,6 +56,17 @@ public class FastMixinPlugin implements IMixinConfigPlugin {
 		// BufferRendererAccessor was removed in 1.21.11 (BufferRenderer class refactored)
 		if (mixinClassName.contains("BufferRendererAccessor")) {
 			return !IS_1_21_11_OR_LATER;
+		}
+		
+		// getMainArm moved from PlayerEntity to LivingEntity in 1.21.11
+		// MixinPlayerEntityGetMainArm is for 1.21 - 1.21.4
+		if (mixinClassName.contains("MixinPlayerEntityGetMainArm")) {
+			return !IS_1_21_11_OR_LATER;
+		}
+		
+		// MixinLivingEntityGetMainArm is for 1.21.11+
+		if (mixinClassName.contains("MixinLivingEntityGetMainArm")) {
+			return IS_1_21_11_OR_LATER;
 		}
 		
 		return true;

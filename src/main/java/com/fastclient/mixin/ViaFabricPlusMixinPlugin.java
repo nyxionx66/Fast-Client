@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.objectweb.asm.tree.ClassNode;
-import org.spongepowered.asm.mixin.extensionpoints.IEnvironmentTokenProvider;
-import org.spongepowered.asm.mixin.extensionpoints.IMixinConfigPlugin;
-import org.spongepowered.asm.mixin.extensionpoints.IMixinInfo;
+import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import net.fabricmc.loader.api.FabricLoader;
 
