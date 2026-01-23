@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -107,17 +106,18 @@ public abstract class MixinMinecraftClient implements IMixinMinecraftClient {
 		}
 	}
 
-	@Inject(method = "doAttack", at = @At("HEAD"))
+	@Inject(method = "doAttack()Z", at = @At("HEAD"))
 	private void onHitDelayFix(CallbackInfoReturnable<Boolean> cir) {
 		if (HitDelayFixMod.getInstance().isEnabled()) {
 			attackCooldown = 0;
 		}
 	}
 
-	@Overwrite
-	public void updateWindowTitle() {
+	@Inject(method = "updateWindowTitle()V", at = @At("HEAD"), cancellable = true)
+	private void onUpdateWindowTitle(CallbackInfo ci) {
 		this.window.setTitle(Fast.getInstance().getName() + " Client v" + Fast.getInstance().getVersion() + " for "
 				+ getWindowTitle());
+		ci.cancel();
 	}
 
 	@Inject(method = "<init>", at = @At("TAIL"))
@@ -126,8 +126,8 @@ public abstract class MixinMinecraftClient implements IMixinMinecraftClient {
 		Fast.getInstance().start();
 	}
 
-	@Inject(method = "tick", at = @At("HEAD"))
-	public void onClientTick(CallbackInfo ci) {
+	@Inject(method = "tick()V", at = @At("HEAD"))
+	private void onClientTick(CallbackInfo ci) {
 		EventBus.getInstance().post(new ClientTickEvent());
 	}
 

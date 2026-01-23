@@ -14,7 +14,7 @@ import net.minecraft.client.network.ServerInfo;
 @Mixin(MultiplayerScreen.class)
 public class MixinMultiplayerScreen {
 
-    @Inject(method = "connect(Lnet/minecraft/client/network/ServerInfo;)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "connect(Lnet/minecraft/client/network/ServerInfo;)V", at = @At("HEAD"))
     private void onConnect(ServerInfo server, CallbackInfo ci) {
         EventBus.getInstance().post(new ServerJoinEvent(server.address));
     }
