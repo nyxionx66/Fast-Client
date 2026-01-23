@@ -15,15 +15,15 @@ import net.minecraft.util.Arm;
 @Mixin(PlayerEntity.class)
 public class MixinPlayerEntity {
 
-	@Inject(method = "getAttackCooldownProgress(F)F", at = @At("HEAD"), cancellable = true)
-	private void onDisableCooldown(CallbackInfoReturnable<Float> cir) {
+	@Inject(method = "getAttackCooldownProgress", at = @At("HEAD"), cancellable = true)
+	public void disableCooldown(CallbackInfoReturnable<Float> cir) {
 		if (OldAnimationsMod.getInstance().isEnabled() && OldAnimationsMod.getInstance().isDisableAttackCooldown()) {
 			cir.setReturnValue(1F);
 		}
 	}
 
-	@Inject(method = "getMainArm()Lnet/minecraft/util/Arm;", at = @At("HEAD"), cancellable = true)
-	private void onGetMainArm(CallbackInfoReturnable<Arm> cir) {
+	@Inject(method = "getMainArm", at = @At("HEAD"), cancellable = true)
+	private void injectGetMainArm(CallbackInfoReturnable<Arm> cir) {
 
 		MinecraftClient client = MinecraftClient.getInstance();
 		PlayerEntity player = client.player;

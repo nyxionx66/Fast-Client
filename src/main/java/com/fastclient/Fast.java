@@ -3,13 +3,12 @@ package com.fastclient;
 import com.fastclient.animation.Delta;
 import com.fastclient.event.EventBus;
 import com.fastclient.event.server.PacketHandler;
-import com.fastclient.libraries.browser.JCefBrowser;
+
 import com.fastclient.management.color.ColorManager;
 import com.fastclient.management.config.ConfigManager;
 import com.fastclient.management.hypixel.HypixelManager;
 import com.fastclient.management.mod.ModManager;
 import com.fastclient.management.music.MusicManager;
-import com.fastclient.management.presence.PresenceManager;
 import com.fastclient.management.profile.ProfileManager;
 import com.fastclient.management.user.UserManager;
 import com.fastclient.management.websocket.WebSocketManager;
@@ -38,7 +37,7 @@ public class Fast {
 
 	public void start() {
 
-		JCefBrowser.download();
+
 		Fonts.loadAll();
 		FileLocation.init();
 		I18n.setLanguage(Language.ENGLISH);
@@ -55,12 +54,10 @@ public class Fast {
 		userManager = new UserManager();
 		hypixelManager = new HypixelManager();
 
+
 		EventBus.getInstance().register(new FastHandler());
 		EventBus.getInstance().register(new PacketHandler());
 		EventBus.getInstance().register(new Delta());
-		
-		// Initialize FastClient user presence detection
-		PresenceManager.init();
 	}
 
 	public static Fast getInstance() {

@@ -24,8 +24,8 @@ public class MixinKeyBinding implements IMixinKeyBinding {
 	@Shadow
 	private boolean pressed;
 
-	@Inject(method = "isPressed()Z", at = @At("HEAD"), cancellable = true)
-	private void onGetPressed(CallbackInfoReturnable<Boolean> cir) {
+	@Inject(method = "isPressed", at = @At("HEAD"), cancellable = true)
+	public void onGetPressed(CallbackInfoReturnable<Boolean> cir) {
 
 		SnapTapMod mod = SnapTapMod.getInstance();
 
@@ -80,8 +80,8 @@ public class MixinKeyBinding implements IMixinKeyBinding {
 		}
 	}
 
-	@Inject(method = "setPressed(Z)V", at = @At("HEAD"))
-	private void onSetPressed(boolean pressed, CallbackInfo ci) {
+	@Inject(method = "setPressed", at = @At("HEAD"))
+	public void setPressed(boolean pressed, CallbackInfo ci) {
 
 		SnapTapMod mod = SnapTapMod.getInstance();
 

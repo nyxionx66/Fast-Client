@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +16,7 @@ import com.fastclient.Fast;
 import com.fastclient.event.EventBus;
 import com.fastclient.event.client.ClientTickEvent;
 import com.fastclient.event.client.GameLoopEvent;
-import com.fastclient.libraries.browser.JCefBrowser;
+
 import com.fastclient.management.config.ConfigType;
 import com.fastclient.management.mod.impl.player.HitDelayFixMod;
 import com.fastclient.management.mod.impl.player.OldAnimationsMod;
@@ -82,7 +83,7 @@ public abstract class MixinMinecraftClient implements IMixinMinecraftClient {
 	@Inject(method = "stop", at = @At("HEAD"))
 	public void onStop(CallbackInfo ci) {
 		Fast.getInstance().getConfigManager().save(ConfigType.MOD);
-		JCefBrowser.close();
+
 	}
 
 	@Inject(method = "handleBlockBreaking", at = @At("HEAD"), cancellable = true)
@@ -106,18 +107,21 @@ public abstract class MixinMinecraftClient implements IMixinMinecraftClient {
 		}
 	}
 
-	@Inject(method = "doAttack()Z", at = @At("HEAD"))
+	@Inject(method = "doAttack", at = @At("HEAD"))
 	private void onHitDelayFix(CallbackInfoReturnable<Boolean> cir) {
 		if (HitDelayFixMod.getInstance().isEnabled()) {
 			attackCooldown = 0;
 		}
 	}
 
-	@Inject(method = "updateWindowTitle()V", at = @At("HEAD"), cancellable = true)
-	private void onUpdateWindowTitle(CallbackInfo ci) {
+	/**
+	 * @author FastClient
+	 * @reason Update window title with client name and version
+	 */
+	@Overwrite
+	public void updateWindowTitle() {
 		this.window.setTitle(Fast.getInstance().getName() + " Client v" + Fast.getInstance().getVersion() + " for "
 				+ getWindowTitle());
-		ci.cancel();
 	}
 
 	@Inject(method = "<init>", at = @At("TAIL"))
@@ -126,8 +130,8 @@ public abstract class MixinMinecraftClient implements IMixinMinecraftClient {
 		Fast.getInstance().start();
 	}
 
-	@Inject(method = "tick()V", at = @At("HEAD"))
-	private void onClientTick(CallbackInfo ci) {
+	@Inject(method = "tick", at = @At("HEAD"))
+	public void onClientTick(CallbackInfo ci) {
 		EventBus.getInstance().post(new ClientTickEvent());
 	}
 

@@ -1,24 +1,25 @@
 package com.fastclient.skia.font;
 
 import io.github.humbleui.skija.Font;
+import io.github.humbleui.skija.Typeface;
 
 public class Fonts {
 
-	private static final String REGULAR = "Inter-Regular-CJKsc.ttf";
-	private static final String MEDIUM = "Inter-Medium-CJKsc.ttf";
 	private static final String ICON_FILL = "MaterialSymbolsRounded_Fill.ttf";
 	private static final String ICON = "MaterialSymbolsRounded.ttf";
 
 	public static void loadAll() {
-		FontHelper.preloadFonts(REGULAR, MEDIUM, ICON_FILL, ICON);
+		FontHelper.preloadFonts(ICON_FILL, ICON);
 	}
 
 	public static Font getRegular(float size) {
-		return FontHelper.load(REGULAR, size);
+		return new Font(Typeface.makeDefault(), size);
 	}
 
 	public static Font getMedium(float size) {
-		return FontHelper.load(MEDIUM, size);
+		// Default typeface doesn't have a specific "Medium" variant easily accessible this way,
+		// but using the default is the best fallback for removing custom files.
+		return new Font(Typeface.makeDefault(), size);
 	}
 
 	public static Font getIconFill(float size) {

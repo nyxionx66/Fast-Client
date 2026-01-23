@@ -46,8 +46,8 @@ public class MixinGameRenderer {
 		}
 	}
 
-	@Inject(method = "getFov(Lnet/minecraft/client/render/Camera;FZ)F", at = @At("RETURN"), cancellable = true)
-	private void onGetFov(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Float> cir) {
+	@Inject(method = "getFov", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
+	private void getFov(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Float> cir) {
 		if (ZoomMod.getInstance().isEnabled()) {
 			float value = cir.getReturnValue();
 			value = ZoomMod.getInstance().getFov(value);

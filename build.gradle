@@ -49,31 +49,23 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
 	modImplementation "com.viaversion:viafabricplus-api:4.0.2"
 
-	modRuntimeOnly "maven.modrinth:sodium:mc1.21.4-0.6.6-fabric"
-	modRuntimeOnly "maven.modrinth:iris:1.8.5+1.21.4-fabric"
-	modRuntimeOnly "maven.modrinth:sodium-extra:mc1.21.4-0.6.1+fabric"
-	modRuntimeOnly "maven.modrinth:lithium:mc1.21.4-0.14.7-fabric"
-	modRuntimeOnly "maven.modrinth:in-game-account-switcher:WBbjirJP"
 	modRuntimeOnly "com.viaversion:viafabricplus:4.0.2"
-	modRuntimeOnly "maven.modrinth:immediatelyfast:1.3.3+1.21.4-fabric"
-	modRuntimeOnly "maven.modrinth:entityculling:NkBXk0Ye"
+
 
 	jij 'com.github.ben-manes.caffeine:caffeine:3.1.8'
 	jij 'io.github.humbleui:types:0.2.0'
 	jij 'io.github.humbleui:skija-windows-x64:0.116.4'
-	jij 'io.github.humbleui:skija-linux-x64:0.116.4'
-	jij 'io.github.humbleui:skija-macos-x64:0.116.4'
-	jij 'io.github.humbleui:skija-macos-arm64:0.116.4'
+//	jij 'io.github.humbleui:skija-linux-x64:0.116.4'
+//	jij 'io.github.humbleui:skija-macos-x64:0.116.4'
+//	jij 'io.github.humbleui:skija-macos-arm64:0.116.4'
 	jij 'com.kohlschutter.junixsocket:junixsocket-common:2.10.1'
 	jij 'org.java-websocket:Java-WebSocket:1.6.0'
 	jij "net.lenni0451:MCPing:1.4.2"
 	jij "net.lenni0451:Reflect:1.4.0"
 	
-	modJij 'com.github.CCBlueX:mcef:3.0.0-1.21.4'
+
 	
 	jij 'javazoom:jlayer:1.0.1'
 	jij 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
@@ -83,9 +75,9 @@ dependencies {
 
     def lwjglNfdDeps = [
         "org.lwjgl:lwjgl-nfd:$lwjglVersion",
-        "org.lwjgl:lwjgl-nfd::natives-linux",
-        "org.lwjgl:lwjgl-nfd::natives-macos",
-        "org.lwjgl:lwjgl-nfd::natives-macos-arm64",
+//        "org.lwjgl:lwjgl-nfd::natives-linux",
+//        "org.lwjgl:lwjgl-nfd::natives-macos",
+//        "org.lwjgl:lwjgl-nfd::natives-macos-arm64",
         "org.lwjgl:lwjgl-nfd::natives-windows"
     ]
     

@@ -32,14 +32,14 @@ public abstract class MixinLivingEntity implements IMixinLivingEntity {
 	@Shadow
 	public abstract int getHandSwingDuration();
 
-	@Inject(method = "tickMovement()V", at = @At("HEAD"))
-	private void onNoJumpDelay(CallbackInfo ci) {
+	@Inject(method = "tickMovement", at = @At("HEAD"))
+	public void onNoJumpDelay(CallbackInfo ci) {
 		if (NoJumpDelayMod.getInstance().isEnabled()) {
 			jumpingCooldown = 0;
 		}
 	}
 
-	@Inject(method = "jump()V", at = @At("HEAD"))
+	@Inject(method = "jump", at = @At("HEAD"))
 	private void onJump(CallbackInfo info) {
 
 		JumpResetIndicatorMod mod = JumpResetIndicatorMod.getInstance();
@@ -51,7 +51,7 @@ public abstract class MixinLivingEntity implements IMixinLivingEntity {
 		}
 	}
 
-	@Inject(method = "onDamaged(Lnet/minecraft/entity/damage/DamageSource;)V", at = @At("HEAD"))
+	@Inject(method = "onDamaged", at = @At("HEAD"))
 	private void onDamage(CallbackInfo info) {
 
 		JumpResetIndicatorMod mod = JumpResetIndicatorMod.getInstance();
