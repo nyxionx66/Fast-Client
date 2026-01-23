@@ -135,7 +135,6 @@ public class ProfilePage extends Page {
 			Skia.drawText(profileName, textX, itemY + 28, palette.getOnSurface(), Fonts.getMedium(18));
 			
 			String author = p.getAuthor() != null ? p.getAuthor() : "";
-			String author = p.getAuthor() != null ? p.getAuthor() : "";
 			if (!author.isEmpty()) {
 				String limitedAuthor = Skia.getLimitText(author, Fonts.getRegular(13), cardWidth - iconSize - iconPadding * 2 - 20);
 				Skia.drawText(limitedAuthor, textX, itemY + 48, palette.getOnSurfaceVariant(), Fonts.getRegular(13));

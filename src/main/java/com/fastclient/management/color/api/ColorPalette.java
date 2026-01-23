@@ -37,6 +37,7 @@ public class ColorPalette {
 	private static final Color TERTIARY_CONTAINER = new Color(0x1A, 0x10, 0x0A);       
 	
 	private static final Color ON_PRIMARY_CONTAINER = new Color(0xFF, 0x84, 0x3F);     
+	private static final Color ON_SECONDARY_CONTAINER = new Color(0xFF, 0xA0, 0x5A);  
 	private static final Color ON_TERTIARY_CONTAINER = new Color(0xED, 0x79, 0x3B);    
 
 	public ColorPalette(Hct hct, boolean dark, float contrast) {
