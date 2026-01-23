@@ -76,23 +76,24 @@ public class ArmorStatsMod extends HUDMod {
 			context.getMatrices().push();
 			context.getMatrices().scale(scale, scale, 1.0f);
 			context.drawItem(displayStack, (int)(scaledX / scale), (int)(scaledY / scale));
+			context.getMatrices().pop();
 			
-			// Draw durability bar under the item (like in inventory)
+			// Draw durability bar BELOW the item (outside scale matrix)
 			if (showDurability && !stack.isEmpty() && stack.getMaxDamage() > 0 && stack.getDamage() > 0) {
 				float durabilityPercent = 1.0f - ((float) stack.getDamage() / stack.getMaxDamage());
-				int barX = (int)(scaledX / scale) + 2;
-				int barY = (int)(scaledY / scale) + 13; // Position at bottom of 16px item slot
-				int barWidth = 13;
+				int itemSize = (int)(16 * scale);
+				int barX = (int)scaledX + (int)(2 * scale);
+				int barY = (int)scaledY + itemSize + 1; // Position BELOW the item
+				int barWidth = (int)(13 * scale);
+				int barHeight = Math.max(1, (int)(2 * scale));
 				int filledWidth = Math.round(barWidth * durabilityPercent);
 				
 				// Background bar (black)
-				context.fill(barX, barY, barX + barWidth, barY + 2, 0xFF000000);
+				context.fill(barX, barY, barX + barWidth, barY + barHeight, 0xFF000000);
 				// Durability bar (colored based on durability)
 				int barColor = getDurabilityBarColor(durabilityPercent);
-				context.fill(barX, barY, barX + filledWidth, barY + 2, barColor);
+				context.fill(barX, barY, barX + filledWidth, barY + barHeight, barColor);
 			}
-			
-			context.getMatrices().pop();
 		}
 	};
 

@@ -86,6 +86,12 @@ Fast Client utilizes state-of-the-art libraries:
 
 ---
 
+## 📖 Documentation
+
+- [Mixin Details](file:///f:/Fast-Client/MIXINS.md): A comprehensive look at how Fast Client modifies Minecraft's internals.
+
+---
+
 ## 🚀 Building from Source
 
 Ensure you have **JDK 21** installed.
