@@ -9,6 +9,7 @@ import com.fastclient.management.config.ConfigManager;
 import com.fastclient.management.hypixel.HypixelManager;
 import com.fastclient.management.mod.ModManager;
 import com.fastclient.management.music.MusicManager;
+import com.fastclient.management.presence.PresenceManager;
 import com.fastclient.management.profile.ProfileManager;
 import com.fastclient.management.user.UserManager;
 import com.fastclient.management.websocket.WebSocketManager;
@@ -57,6 +58,9 @@ public class Fast {
 		EventBus.getInstance().register(new FastHandler());
 		EventBus.getInstance().register(new PacketHandler());
 		EventBus.getInstance().register(new Delta());
+		
+		// Initialize FastClient user presence detection
+		PresenceManager.init();
 	}
 
 	public static Fast getInstance() {
