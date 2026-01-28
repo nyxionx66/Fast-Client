@@ -107,7 +107,3 @@ Ensure you have **JDK 21** installed.
 The compiled JAR will be located in `build/libs/`.
 
 ---
-
-<div align="center">
-Made with ❤️ for the Minecraft Community
-</div>
